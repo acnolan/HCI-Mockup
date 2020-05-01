@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- my stuff -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="description" content="A mockup for our HCI Class">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel='icon' href='./images/favicon.ico'>
+    <title>26 Live</title>
+</head>
+
+<style>
+    .big-button{
+        text-align: center;
+        width: 350px;
+        height: 180px;
+        margin-bottom: 10px;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+    input{
+        width: 135px;
+    }
+    td{
+        outline: 1px solid black;
+        padding: 15px;
+    }
+</style>
+
+<body>
+    <div class="container" style="text-align: center;">
+        <br>
+        <div class="row" style="display: block; position: relative;">
+            <span style="float: right; position: absolute; right: 100px; top: 10px;"><a href="searchlogin.html">Login</a></span>
+            <h1 onclick="window.location.href='home.html'" style="text-align: center; cursor:pointer">26 Live</h1>
+        </div>
+        <p>Search for an existing reservation (all fields optional)</p>
+        <div class="row">
+            <form>
+                <fieldset>
+                    <label for="event">Event:</label>
+                    <input type="text" id="event">
+                    <label for="organization">Organization:</label>
+                    <input type="text" id="organization">
+                    <label for="starttime">Start Time:</label>
+                    <input type="time" id="starttime">
+                    <label for="event">Location:</label>
+                    <input type="text" id="event">
+                    <label for="date">Date:</label>
+                    <input type="date" id="date">
+                    
+                </fieldset>
+            </form>
+            <button onclick="mySearch()" style="margin-left: 10px;height: 30px;">Search</button>
+        </div>
+        <br>
+        <div class="row">
+            <p>Results:</p>
+        </div>
+        <div class="row">
+            <table id="original" style="margin: auto;">
+                <tr>
+                    <td>Event:</td>
+                    <td>Organization:</td>
+                    <td>Location:</td>
+                    <td>Date:</td>
+                    <td>starttime:</td>
+                    <td>Endtime:</td>
+                    <td>State:</td>
+                    <td>Scheduler:</td>
+                </tr>
+                <tr>
+                    <td>Event A</td>
+                    <td>CS Department</td>
+                    <td>Fuller Upper</td>
+                    <td>5/1/2020</td>
+                    <td>12:00pm</td>
+                    <td>1:00pm</td>
+                    <td>Cancelled</td>
+                    <td>Andrew Nolan</td>
+                </tr>
+                <tr>
+                    <td>Event B</td>
+                    <td>Math Department</td>
+                    <td>Stratton 203</td>
+                    <td>5/3/2020</td>
+                    <td>12:00am</td>
+                    <td>1:00am</td>
+                    <td>Cancelled</td>
+                    <td>Andrew Nolan</td>
+                </tr>
+                <tr>
+                    <td>Event C</td>
+                    <td>CS Department</td>
+                    <td>Fuller Upper</td>
+                    <td>5/2/2020</td>
+                    <td>4:00pm</td>
+                    <td>7:00pm</td>
+                    <td>Cancelled</td>
+                    <td>Andrew Nolan</td>
+                </tr>
+            </table>
+            <table id="new" style="margin: auto; display: none;">
+                <tr>
+                    <td>Event:</td>
+                    <td>Organization:</td>
+                    <td>Location:</td>
+                    <td>Date:</td>
+                    <td>starttime:</td>
+                    <td>Endtime:</td>
+                    <td>State:</td>
+                    <td>Scheduler:</td>
+                </tr>
+                <tr>
+                    <td>Event D</td>
+                    <td>CS Department</td>
+                    <td>Foisie 201</td>
+                    <td>4/29/2020</td>
+                    <td>11:00pm</td>
+                    <td>12:00am</td>
+                    <td>Cancelled</td>
+                    <td>Andrew Nolan</td>
+                </tr>
+                <tr>
+                    <td>Event E</td>
+                    <td>Math Department</td>
+                    <td>Stratton 204</td>
+                    <td>6/5/2020</td>
+                    <td>12:00pm</td>
+                    <td>1:00pm</td>
+                    <td>Cancelled</td>
+                    <td>Andrew Nolan</td>
+                </tr>
+                <tr>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+</body>
+
+<script>
+    function mySearch(){
+        document.getElementById('original').style.display='none';
+        document.getElementById('new').style.display='block';
+    }
+</script>

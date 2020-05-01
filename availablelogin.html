@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- my stuff -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="description" content="A mockup for our HCI Class">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel='icon' href='./images/favicon.ico'>
+    <title>26 Live</title>
+</head>
+
+<style>
+    .container{
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+    form{
+        outline: 1px solid black;
+        padding: 20px;
+        background-color: white;
+        width: 500px;
+        margin: auto;
+    }
+    body{
+        background-image: url(https://secure.aadcdn.microsoftonline-p.com/dbd5a2dd-5romrjnj1fbjgvq2kyyp7i12fubldlronagtibh4o-q/logintenantbranding/0/illustration?ts=636705461409103179);
+    }
+</style>
+
+<body>
+    <div class="background-overlay">
+    </div>
+    <div class="container" style="text-align: center;">
+        <br><br><br><br><br>
+        <form>
+            <img class="banner-logo" role="presentation" data-bind="attr: { src: bannerLogoUrl }" src="https://secure.aadcdn.microsoftonline-p.com/dbd5a2dd-5romrjnj1fbjgvq2kyyp7i12fubldlronagtibh4o-q/logintenantbranding/0/bannerlogo?ts=636705460812114694" style="margin-right: 70px;">
+            <h3>
+              Login:
+            </h3>
+            <fieldset>
+              <label for="username">Username:</label>
+              <input type="text" placeholder="username" id="username" required>
+              <br>
+              <label for="password">Pass word:</label>
+              <input type="password" placeholder="password" id="password" required> 
+              <br>
+              <p style="color:red">*In the actual implentation this would be a real wpi login form</p>
+              <input class="button-primary" type="button" value="Login" id="loginbutton" onclick="myClick()">
+              <p id="error" style="visibility: hidden;">*Please fill in both fields</p>
+            </fieldset>       
+          </form>
+    </div>
+</body>
+
+<script>
+    function myClick(){
+        if(document.getElementById('username').value !== "" && document.getElementById('password').value !== ""){
+            window.location.href='available.html';
+        }else{
+            document.getElementById('error').style.visibility='visible';
+        }
+    }
+</script>

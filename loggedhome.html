@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- my stuff -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="description" content="A mockup for our HCI Class">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel='icon' href='favicon.ico'>
+    <title>26 Live</title>
+</head>
+
+<style>
+    .big-button{
+        text-align: center;
+        width: 350px;
+        height: 180px;
+        margin-bottom: 10px;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <br>
+        <div class="row" style="display: block; position: relative;">
+            <span style="float: right; position: absolute; right: 100px; top: 10px;"><a href="home.html">Log Out</a></span>
+            <h1 onclick="window.location.href='loggedhome.html'"  style="text-align: center; cursor:pointer">26 Live</h1>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-8" style="text-align: center;">
+                <button onclick="window.location.href='loggedsearch.html'" class="big-button">Search for an Existing Reservation</button>
+                <button onclick="window.location.href='available.html'" class="big-button">Find an Available Location/Make a Reservation</button>
+                <button onclick="window.location.href='reserve.html'" class="big-button">View my Reservations</button>
+            </div>
+            <div class="col-lg-4" style="border-left: 1px solid black;">
+                <p style="border-bottom: 1px dotted black;">Your upcoming events:</p>
+                <br>
+                <p><strong>Event Name</strong></p>
+                <p>Chess Club; SH 203; 5/2/2020; 4:00pm</p>
+            </div>
+        </div>
+    </div>
+    
+</body>

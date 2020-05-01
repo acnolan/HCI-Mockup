@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- my stuff -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="description" content="A mockup for our HCI Class">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel='icon' href='favicon.ico'>
+    <title>26 Live</title>
+</head>
+
+<style>
+    .big-button {
+        text-align: center;
+        width: 350px;
+        height: 180px;
+        margin-bottom: 10px;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+
+    input {
+        width: 135px;
+    }
+
+    td {
+        outline: 1px solid black;
+        padding: 15px;
+    }
+
+    /* Modal from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_login_form_modal */
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+        padding-top: 60px;
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 0% auto 15% auto;
+        /* 0% from the top, 15% from the bottom and centered */
+        border: 1px solid #888;
+        width: 40%;
+        /* Could be more or less, depending on screen size */
+    }
+
+    #modalsuccess .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto 15% auto;
+        /* 5% from the top, 15% from the bottom and centered */
+        border: 1px solid #888;
+        width: 30%;
+        /* Could be more or less, depending on screen size */
+    }
+
+    /* The Close Button (x) */
+    .close {
+        position: absolute;
+        right: 25px;
+        top: 0;
+        color: #000;
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: red;
+        cursor: pointer;
+    }
+
+    /* Add Zoom Animation */
+    .animate {
+        -webkit-animation: animatezoom 0.6s;
+        animation: animatezoom 0.6s
+    }
+
+    @-webkit-keyframes animatezoom {
+        from {
+            -webkit-transform: scale(0)
+        }
+
+        to {
+            -webkit-transform: scale(1)
+        }
+    }
+
+    @keyframes animatezoom {
+        from {
+            transform: scale(0)
+        }
+
+        to {
+            transform: scale(1)
+        }
+    }
+
+    #modalscreen input {
+        width: 90%;
+    }
+</style>
+
+<body>
+    <div class="container" style="text-align: center;">
+        <br>
+        <div class="row" style="display: block; position: relative;">
+            <span style="float: right; position: absolute; right: 100px; top: 10px;"><a href="home.html">Log
+                    out</a></span>
+            <h1 onclick="window.location.href='loggedhome.html'" style="text-align: center; cursor:pointer">26 Live</h1>
+        </div>
+        <p>View your reservations</p>
+        <div class="row">
+            <form>
+                <fieldset>
+                    <label for="event">Event:</label>
+                    <input type="text" id="event">
+                    <label for="organization">Organization:</label>
+                    <input type="text" id="organization">
+                    <label for="starttime">Start Time:</label>
+                    <input type="time" id="starttime">
+                    <label for="event">Location:</label>
+                    <input type="text" id="event">
+                    <label for="date">Date:</label>
+                    <input type="date" id="date">
+                </fieldset>
+            </form>
+            <button onclick="mySearch()" style="margin-left: 10px;height: 30px;">Search</button>
+        </div>
+        <br>
+        <div class="row">
+            <p>Results:</p>
+        </div>
+        <div class="row">
+            <table id="original" style="margin: auto;">
+                <tr>
+                    <td>Event:</td>
+                    <td>Organization:</td>
+                    <td>Location:</td>
+                    <td>Date:</td>
+                    <td>starttime:</td>
+                    <td>Duration:</td>
+                    <td>Expected Attendees:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Event A</td>
+                    <td>Your organization A</td>
+                    <td>Fuller Upper</td>
+                    <td>5/1/2020</td>
+                    <td>12:00pm</td>
+                    <td>1 hour</td>
+                    <td>5 people</td>
+                    <td><button onclick="document.getElementById('modalscreen').style.display='block'">Edit</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Event B</td>
+                    <td>Your organization B</td>
+                    <td>Stratton 203</td>
+                    <td>5/3/2020</td>
+                    <td>12:00am</td>
+                    <td>1 hour</td>
+                    <td>500 people</td>
+                    <td><button onclick="document.getElementById('modalscreen').style.display='block'">Edit</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Event C</td>
+                    <td>Your organization A</td>
+                    <td>Fuller Upper</td>
+                    <td>5/2/2020</td>
+                    <td>4:00pm</td>
+                    <td>3 hours</td>
+                    <td>2 people</td>
+                    <td><button onclick="document.getElementById('modalscreen').style.display='block'">Edit</button>
+                    </td>
+                </tr>
+            </table>
+            <table id="new" style="margin: auto; display: none;">
+                <tr>
+                    <td>Event:</td>
+                    <td>Organization:</td>
+                    <td>Location:</td>
+                    <td>Date:</td>
+                    <td>starttime:</td>
+                    <td>Duration:</td>
+                    <td>Expected Attendees:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Event D</td>
+                    <td>Your organization A</td>
+                    <td>Fuller Upper</td>
+                    <td>5/5/2021</td>
+                    <td>12:00pm</td>
+                    <td>12 hours</td>
+                    <td>3 people</td>
+                    <td><button onclick="document.getElementById('modalscreen').style.display='block'">Edit</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Event E</td>
+                    <td>Your organization E</td>
+                    <td>Foisie Screen</td>
+                    <td>7/3/2020</td>
+                    <td>1:00am</td>
+                    <td>2 hours</td>
+                    <td>13 people</td>
+                    <td><button onclick="document.getElementById('modalscreen').style.display='block'">Edit</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td><button onclick="document.getElementById('modalscreen').style.display='block'">Edit</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="modalscreen" class="modal">
+        <div class="modal-content animate">
+            <form>
+                <div class="imgcontainer">
+                    <span
+                        onclick="document.getElementById('modalscreen').style.display='none';document.getElementById('modalsuccess').style.display='none';"
+                        class="close" title="Close Modal">&times;</span>
+                </div>
+
+                <div class="container" style="margin:25px">
+                    <h3>Edit your reservation</h3>
+                    <p><strong>Event Name: </strong>~~~~~~~~~~~</p>
+                    <p><strong>Organization: </strong>~~~~~~~~~~~</p>
+                    <label for="date">Date:</label>
+                    <br>
+                    <input type="date" id="date">
+                    <br>
+                    <label for="location">Location:</label>
+                    <br>
+                    <input type="text" id="location">
+                    <br>
+                    <label for="starttime">Start Time:</label>
+                    <br>
+                    <input type="time" id="starttime">
+                    <br>
+                    <label for="duration">Duration:</label>
+                    <br>
+                    <input type="number" id="duration">
+                    <br>
+                    <label for="attendees">Expected Number of Attendees:</label>
+                    <br>
+                    <input type="number" id="attendees">
+                </div>
+            </form>
+            <div style="text-align: center; margin-bottom: 20px">
+                <button onclick="success()" style="width:fit-content">Save Changes</button>
+            </div>
+
+        </div>
+    </div>
+    <div id="modalsuccess" class="modal">
+        <div class="modal-content animate" style="text-align: center;">
+            <h1 style="color:green">✔</h1>
+            <h2>Reservation Added Successfully</h2>
+        </div>
+    </div>
+</body>
+
+<script>
+    function mySearch() {
+        document.getElementById('original').style.display = 'none';
+        document.getElementById('new').style.display = 'block';
+    }
+
+    function success() {
+        document.getElementById('modalsuccess').style.display = 'block';
+    }
+
+    var modal = document.getElementById('modalscreen');
+    var modal2 = document.getElementById('modalsuccess');
+
+    window.onclick = function (event) {
+        console.log(event.target)
+        if (event.target == modal || event.target == modal2) {
+            modal.style.display = "none";
+            modal2.style.display = "none";
+        }
+    }
+</script>
